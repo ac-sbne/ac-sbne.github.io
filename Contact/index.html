@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>kitsune-lp | Contact</title>
+    <meta name="description" content="Contact: Gmail螳帙・縺雁撫縺・粋繧上○蟆守ｷ壹・繝ｼ繧ｸ縲・ />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <span class="brand-placeholder" aria-hidden="true"></span>
+        <nav class="site-nav" aria-label="繝｡繧､繝ｳ繝翫ン繧ｲ繝ｼ繧ｷ繝ｧ繝ｳ">
+          <a href="../">Home</a>
+          <a href="../Create%20Item/">Create Item</a>
+          <a href="../Information/">Information</a>
+          <a class="active" href="./">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero">
+        <div class="container">
+          <p class="eyebrow">Contact</p>
+          <h1>縺雁撫縺・粋繧上○</h1>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="container">
+          <div class="form-wrap">
+            <form id="contact-form" action="https://formsubmit.co/acsbne.company@gmail.com" method="post">
+              <input type="hidden" name="_subject" value="kitsune-lp Contact" />
+              <input type="hidden" name="_captcha" value="true" />
+              <input type="hidden" name="_template" value="table" />
+              <label for="name">縺雁錐蜑・/label>
+              <input id="name" name="name" type="text" required />
+
+              <label for="email">繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ</label>
+              <input id="email" name="email" type="email" required />
+
+              <label for="message">縺雁撫縺・粋繧上○蜀・ｮｹ</label>
+              <textarea id="message" name="message" required></textarea>
+
+              <button class="btn btn-primary" type="submit">騾∽ｿ｡縺吶ｋ</button>
+            </form>
+            <p id="contact-status" class="note" aria-live="polite"></p>
+            <p class="note">
+              縺雁撫縺・粋繧上○縺ｧ蜿門ｾ励＠縺溷倶ｺｺ諠・ｱ縺ｯ縲√♀蝠上＞蜷医ｏ縺帛ｯｾ蠢懊・逶ｮ逧・↓縺ｮ縺ｿ蛻ｩ逕ｨ縺励∫岼逧・､門茜逕ｨ縺ｯ陦後＞縺ｾ縺帙ｓ縲・            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const contactForm = document.getElementById("contact-form");
+      const statusText = document.getElementById("contact-status");
+
+      contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        statusText.textContent = "騾∽ｿ｡荳ｭ縺ｧ縺・..";
+
+        const formData = new FormData(contactForm);
+        try {
+          const response = await fetch("https://formsubmit.co/ajax/acsbne.company@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          if (!response.ok) {
+            throw new Error("send_failed");
+          }
+
+          statusText.textContent = "騾∽ｿ｡縺悟ｮ御ｺ・＠縺ｾ縺励◆縲ょ・螳ｹ繧堤｢ｺ隱阪＠縺ｦ霑比ｿ｡縺・◆縺励∪縺吶・;
+          contactForm.reset();
+        } catch (error) {
+          statusText.textContent = "騾∽ｿ｡縺ｫ螟ｱ謨励＠縺ｾ縺励◆縲よ凾髢薙ｒ縺翫＞縺ｦ蜀榊ｺｦ縺願ｩｦ縺励￥縺縺輔＞縲・;
+        }
+      });
+    </script>
+  </body>
+</html>
+
