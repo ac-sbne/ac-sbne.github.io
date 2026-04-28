@@ -6,6 +6,8 @@
     <title>Contact</title>
     <meta name="description" content="Contact: Gmail宛のお問い合わせ導線ページ。" />
     <link rel="stylesheet" href="../styles.css" />
+    <script src="../analytics-config.js"></script>
+    <script src="../analytics.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -67,6 +69,7 @@
           });
           if (!response.ok) throw new Error("send_failed");
           statusText.textContent = "送信が完了しました。内容を確認して返信いたします。";
+          window.dispatchEvent(new CustomEvent("marketing:form_submit", { detail: { form: "contact" } }));
           contactForm.reset();
         } catch (error) {
           statusText.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
